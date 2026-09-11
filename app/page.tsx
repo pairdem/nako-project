@@ -1,69 +1,31 @@
-import Image from "next/image";
+"use client";
+
+import { useEffect, useState } from "react";
+
+const capabilities = [
+  { n: "01", t: "Country Presence", d: "Structured in-country capability without the cost and delay of a permanent entity.", p: ["Local registrations and agency arrangements", "Customs and clearance coordination", "Facilities, vehicles and vetted personnel"] },
+  { n: "02", t: "Program & Field", d: "Delivery support for programs that contractors and institutions already hold.", p: ["Training-event and site coordination", "CONUS vendor and regional logistics", "Equipment fielding and sustainment liaison"] },
+  { n: "03", t: "Market Access", d: "A disciplined route for manufacturers assessing or expanding within regional markets.", p: ["Demand and procurement assessment", "Structured market visits and partner review", "Tender and representation support"] },
+  { n: "04", t: "Compliance Support", d: "Documentation that keeps cross-border activity visible, reviewable and controlled.", p: ["End-user and trade documentation", "Restricted-party screening coordination", "Local-content and offset support"] },
+];
+
+const shell = "mx-auto w-[min(100%-2.5rem,1240px)] lg:w-[min(100%-11vw,1240px)]";
+const kicker = "text-[.72rem] font-extrabold uppercase tracking-[.06em]";
+function Logo() { return <a href="#top" aria-label="Nako Defense Group home" className="inline-flex items-center gap-3.5 uppercase tracking-[.035em] text-white"><span className="grid size-[42px] place-items-center border border-white/70 font-display text-lg font-bold text-[#f0b03f] sm:size-[52px]">N</span><span><b className="block font-display text-[.8rem] font-extrabold sm:text-[.95rem]">Nako Defense Group</b><small className="mt-1 block text-[.58rem] tracking-[.12em] text-white/75">United States</small></span></a>; }
 
 export default function Home() {
-  return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
-  );
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => { const observer = new IntersectionObserver((entries) => entries.forEach((entry) => entry.isIntersecting && entry.target.classList.add("is-visible")), { threshold: .12 }); const nodes = document.querySelectorAll<HTMLElement>(".reveal"); nodes.forEach((node) => observer.observe(node)); return () => observer.disconnect(); }, []);
+  return <main id="top" className="overflow-hidden bg-white text-[#112743]">
+    <section className="relative flex min-h-[690px] h-svh max-h-[960px] items-center overflow-hidden bg-[linear-gradient(115deg,rgba(4,19,35,1)_15%,transparent_72%),url('https://images.unsplash.com/photo-1464037866556-6812c9d1c72e?auto=format&fit=crop&w=2400&q=85')] bg-cover bg-center text-white before:absolute before:inset-0 before:bg-[linear-gradient(90deg,rgba(2,15,29,.8),rgba(4,22,42,.3)_55%,rgba(1,9,17,.1)),linear-gradient(0deg,rgba(3,15,29,.68),transparent_45%)]" aria-labelledby="hero-title">
+      <div className="absolute bottom-0 left-[20%] h-1/2 w-[90%] bg-[radial-gradient(ellipse,rgba(215,145,39,.3),transparent_57%)] blur-3xl" />
+      <header className={`${shell} absolute top-0 left-1/2 z-10 flex -translate-x-1/2 items-center justify-between py-5 sm:py-9`}><Logo /><button onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="site-menu" className="grid gap-[5px] p-2 lg:hidden"><span className="h-px w-6 bg-white" /><span className="h-px w-6 bg-white" /><span className="sr-only">Toggle navigation</span></button><nav id="site-menu" className={`${menuOpen ? "flex" : "hidden"} absolute right-0 top-full flex-col gap-5 bg-[#06182d] p-6 text-[.69rem] font-extrabold uppercase tracking-[.08em] lg:static lg:flex lg:flex-row lg:bg-transparent lg:p-0`}><a href="#capabilities">Capabilities</a><a href="#corridor">Operating corridor</a><a href="#contact">Contact</a></nav></header>
+      <div className="relative z-[1] ml-[1.25rem] w-[calc(100%-2.5rem)] animate-[heroIn_.9s_cubic-bezier(.16,1,.3,1)_both] lg:ml-[5.5vw] lg:w-[min(980px,86vw)]"><p className={`${kicker} mb-8 text-[#efb247]`}>U.S. contracting <i className="mx-3 inline-block size-[5px] rounded-full bg-[#efb247] align-middle" /> West Africa execution</p><h1 id="hero-title" className="font-display text-[clamp(3.1rem,7vw,7.1rem)] font-extrabold leading-[.97] tracking-[-.065em]">Operational reach.<br />U.S. accountability.</h1><a href="#capabilities" className="mt-10 inline-flex items-center gap-4 border-b border-white/55 pb-2 text-[.76rem] font-extrabold uppercase tracking-[.07em]">Explore our capabilities <span className="text-xl">↘</span></a></div><p className="absolute bottom-6 left-5 z-[1] font-mono text-[.55rem] tracking-[.08em] text-white/70 sm:left-auto sm:right-[5.5vw] sm:text-[.62rem]">WAXHAW, NORTH CAROLINA <span className="mx-2 inline-block h-px w-8 bg-white align-middle" /> WEST AFRICA</p>
+    </section>
+    <section className="bg-[#06182d] py-16 text-white lg:py-20"><div className={`${shell} reveal`}><p className="max-w-[960px] text-[clamp(1.35rem,2.15vw,2rem)] leading-[1.35]">Defense logistics, program support and compliant market access for organizations operating across the Gulf of Guinea corridor.</p><a href="#capabilities" className="mt-12 inline-flex bg-[#d59329] px-7 py-5 text-[.76rem] font-extrabold uppercase tracking-[.06em] text-[#06182d] transition hover:bg-[#efb247]">Capability overview</a><div className="mt-16 grid divide-y divide-white/20 border-t border-white/20 sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">{[["26", "Years executive experience"], ["$200M+", "Portfolio delivered in West Africa"], ["100%", "U.S. citizen-owned"], ["NC", "Headquartered in Waxhaw"]].map(([stat, label]) => <div key={stat} className="py-7 sm:px-7 sm:first:pl-0 lg:py-6"><strong className="font-display text-3xl font-extrabold text-[#efb247]">{stat}</strong><span className="mt-3 block max-w-[190px] text-[.7rem] font-extrabold uppercase leading-[1.4] tracking-[.03em] text-[#b7c1cc]">{label}</span></div>)}</div></div></section>
+    <section id="capabilities" className="grid gap-8 bg-[#f1f4f7] py-20 lg:grid-cols-[1fr_1.14fr] lg:gap-[clamp(3rem,6vw,7rem)] lg:py-[clamp(5rem,10vw,9.5rem)]"><div className={`${shell} reveal lg:mr-0 lg:w-auto lg:pl-[5.5vw]`}><div className="mb-14 inline-flex items-center gap-3.5 uppercase tracking-[.035em]"><span className="grid size-[52px] place-items-center border border-[#112743] font-display text-lg font-bold text-[#c9831e]">N</span><span><b className="block font-display text-[.95rem] font-extrabold">Nako Defense Group</b><small className="mt-1 block text-[.58rem] tracking-[.12em] text-[#617188]">United States</small></span></div><p className={`${kicker} mb-8 text-[#173c67]`}>Who we are</p><h2 className="max-w-[620px] font-display text-[clamp(2.3rem,4vw,4.2rem)] font-extrabold leading-[1.1] tracking-[-.052em] lg:mb-20">A dependable channel into complex operating environments.</h2><p className="mt-10 max-w-[530px] leading-[1.6] text-[#617188] lg:mt-0">Nako Defense Group LLC is a U.S.-based company supporting defense contractors, manufacturers and security-services firms that need credible execution in West Africa without building permanent infrastructure there.</p><p className="mt-10 max-w-[530px] leading-[1.6] text-[#617188] lg:mt-14">Clients contract with one accountable American entity. Delivery is coordinated through established, vetted relationships in Ghana, Nigeria and the wider ECOWAS region.</p><aside className="mt-16 max-w-[550px] bg-[#112743] p-8 text-white lg:mt-28"><span className={`${kicker} mb-6 block text-[#f0b247]`}>Operating principle</span><strong className="font-display text-xl leading-[1.3]">One U.S. agreement.<br />One accountable counterparty.</strong></aside></div><div className="mx-auto grid w-[min(100%-2.5rem,620px)] grid-cols-1 gap-5 lg:mx-0 lg:mr-[5.5vw] lg:w-auto lg:grid-cols-2">{capabilities.map((c, i) => <article key={c.n} style={{ transitionDelay: `${i * 70}ms` }} className="reveal border border-[#ccd5df] bg-white/25 p-8 transition duration-300 hover:-translate-y-1.5 hover:bg-white lg:min-h-[355px]"><p className={`${kicker} text-[#cc861d]`}>{c.n}</p><h3 className="my-5 font-display text-2xl font-extrabold tracking-[-.03em]">{c.t}</h3><p className="text-[.88rem] leading-[1.45] text-[#617188]">{c.d}</p><ul className="mt-5 space-y-2 pt-3 text-[.79rem] leading-[1.42]">{c.p.map((x) => <li key={x} className="relative pl-5 before:absolute before:left-0 before:top-[.45rem] before:size-[5px] before:bg-[#cf861d]">{x}</li>)}</ul></article>)}</div><div className="mx-auto flex w-[min(100%-2.5rem,1240px)] justify-between border-t border-[#ccd5df] pt-4 text-[.65rem] uppercase tracking-[.04em] text-[#617188] lg:col-span-2 lg:w-[min(100%-11vw,1240px)]"><span>Nako Defense Group LLC&nbsp; · &nbsp;Waxhaw, North Carolina</span><span>02</span></div></section>
+    <section id="corridor" className="bg-white py-20 lg:py-[clamp(5rem,10vw,9.5rem)]"><div className={`${shell} grid gap-10 lg:grid-cols-[1fr_1.2fr] lg:gap-[9%]`}><div className="reveal"><div className="mb-14 inline-flex items-center gap-3.5 uppercase tracking-[.035em]"><span className="grid size-[52px] place-items-center border border-[#112743] font-display text-lg font-bold text-[#c9831e]">N</span><span><b className="block font-display text-[.95rem] font-extrabold">Nako Defense Group</b><small className="mt-1 block text-[.58rem] tracking-[.12em] text-[#617188]">United States</small></span></div><p className={`${kicker} mb-8 text-[#173c67]`}>The operating corridor</p><h2 className="font-display text-[clamp(2.3rem,4vw,4.2rem)] font-extrabold leading-[1.1] tracking-[-.052em]">Depth where it matters.</h2><p className="max-w-[530px] leading-[1.6] text-[#617188]">Our near-term focus is the Gulf of Guinea littoral: markets where established relationships and on-the-ground knowledge create meaningful execution capability.</p><div className="mt-10 grid max-w-[480px] grid-cols-2 gap-4">{["United States", "Ghana", "Nigeria", "ECOWAS corridor"].map((x) => <span key={x} className="border border-[#ccd5df] p-4 text-center text-[.72rem] font-extrabold uppercase">{x}</span>)}</div></div><div className="reveal bg-[#f1f4f7] p-8"><p className={`${kicker} mb-10 text-[#cc861d]`}>How we work</p>{[["01", "One accountable counterparty", "Nako scopes, contracts and invoices from the United States while supervising vetted delivery partners."], ["02", "Compliance before opportunity", "Export-control, anti-corruption, counterparty-screening and conflict-review controls guide each engagement."]].map(([n, t, d]) => <div key={n} className="grid grid-cols-[48px_1fr] border-t border-[#ccd5df] py-6"><b className="text-xs text-[#cc861d]">{n}</b><h3 className="font-display text-xl font-extrabold">{t}</h3><p className="col-start-2 mt-3 text-[.88rem] leading-[1.45] text-[#617188]">{d}</p></div>)}</div></div><div className={`${shell} reveal mt-10 grid gap-10 bg-[#173b67] p-8 text-white lg:mt-20 lg:grid-cols-[1fr_1.1fr] lg:gap-[10%]`}><div><p className={`${kicker} text-[#f1b24d]`}>Compliance-led by design</p><h2 className="mt-8 font-display text-[clamp(2.2rem,3.6vw,3.5rem)] font-extrabold leading-[1.1] tracking-[-.05em]">Structured to meet<br />serious risk review.</h2></div><div><p className="leading-[1.55] text-[#ced8e3]">Engagements are documented, fees are disclosed and non-contingent, and any activities that require authorization, license or approval begin only after the applicable authorization is in place.</p><div className="mt-12 flex flex-wrap gap-3">{["Export controls", "FCPA controls", "Restricted-party screening", "Conflict review"].map((x) => <span key={x} className="border border-[#6984a5] px-4 py-3 text-[.62rem] font-extrabold uppercase">{x}</span>)}</div></div></div><div className={`${shell} mt-16 flex justify-between border-t border-[#ccd5df] pt-4 text-[.65rem] uppercase tracking-[.04em] text-[#617188]`}><span>Nako Defense Group LLC&nbsp; · &nbsp;Waxhaw, North Carolina</span><span>03</span></div></section>
+    <section className="overflow-hidden bg-[#f1f4f7] py-20 lg:py-[clamp(5rem,10vw,9.5rem)]"><div className={`${shell} reveal relative`}><div className="mb-16 inline-flex items-center gap-3.5 uppercase tracking-[.035em]"><span className="grid size-[52px] place-items-center border border-[#112743] font-display text-lg font-bold text-[#c9831e]">N</span><span><b className="block font-display text-[.95rem] font-extrabold">Nako Defense Group</b><small className="mt-1 block text-[.58rem] tracking-[.12em] text-[#617188]">United States</small></span></div><p className={`${kicker} text-[#173c67]`}>Leadership</p><div className="absolute -left-4 top-44 font-display text-[clamp(8rem,18vw,17rem)] font-extrabold leading-none tracking-[-.1em] text-[#e3e9ef]">26</div><div className="relative pt-28 lg:ml-[24%] lg:pt-10"><h2 className="font-display text-[clamp(2.3rem,4vw,4.2rem)] font-extrabold tracking-[-.052em]">Kojo Ansah Mensah</h2><p className={`${kicker} mt-3 text-[#cc861d]`}>Owner and managing member</p><p className="mt-12 max-w-[850px] leading-[1.6] text-[#617188]">Kojo is a U.S. citizen with more than 26 years of executive experience spanning corporate finance, infrastructure delivery, investment management and cross-border enterprise leadership in the United States, Ghana and Nigeria.</p><p className="mt-10 max-w-[850px] leading-[1.6] text-[#617188]">His background combines U.S. financial and governance discipline with delivery leadership on large-scale West African development platforms - experience that shapes Nako&apos;s accountable, execution-focused approach.</p></div></div></section>
+    <footer id="contact" className="bg-[#06182d] py-20 pb-6 text-white"><div className={`${shell} reveal grid gap-12 lg:grid-cols-2 lg:gap-[14%]`}><div><p className={`${kicker} text-[#efb247]`}>Start a conversation</p><h2 className="my-8 max-w-[630px] font-display text-[clamp(2.5rem,4.5vw,4.8rem)] font-extrabold leading-[1.08] tracking-[-.06em]">Bring us the operating requirement.</h2><p className="max-w-[550px] leading-[1.6] text-[#aebac8]">For contractors, manufacturers and institutional partners that need compliant, credible execution across the U.S.-West Africa corridor.</p></div><address className="not-italic">{[["Email", "kojo@nakodefensegroup.com", "mailto:kojo@nakodefensegroup.com"], ["Telephone", "+1 612 328 4811", "tel:+16123284811"], ["Headquarters", "Waxhaw, North Carolina, United States", ""]].map(([label, value, href]) => <div key={label} className="border-b border-[#c2d2e4]/25 py-5"><b className={`${kicker} mb-4 block text-[#efb247]`}>{label}</b>{href ? <a href={href}>{value}</a> : <span>{value}</span>}</div>)}</address></div><div className={`${shell} mt-16 flex items-center justify-between border-t border-[#c2d2e4]/25 pt-6 font-mono text-[.63rem] tracking-[.03em] text-[#96a7ba]`}><span>© 2026 Nako Defense Group LLC</span><span>WAXHAW, NC</span></div></footer>
+  </main>;
 }
